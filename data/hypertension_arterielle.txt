@@ -1,0 +1,80 @@
+HYPERTENSION ARTÉRIELLE — Guide Clinique Résumé
+
+1. DÉFINITION
+L'hypertension artérielle (HTA) est définie par une pression artérielle systolique (PAS) 
+≥ 140 mmHg et/ou une pression artérielle diastolique (PAD) ≥ 90 mmHg, mesurée au cabinet médical.
+Elle constitue le premier facteur de risque cardiovasculaire modifiable dans le monde.
+
+2. CLASSIFICATION
+- Normale : PAS < 120 et PAD < 80 mmHg
+- Normale haute : PAS 120-139 ou PAD 80-89 mmHg
+- HTA Grade 1 (légère) : PAS 140-159 ou PAD 90-99 mmHg
+- HTA Grade 2 (modérée) : PAS 160-179 ou PAD 100-109 mmHg
+- HTA Grade 3 (sévère) : PAS ≥ 180 ou PAD ≥ 110 mmHg
+
+3. ÉPIDÉMIOLOGIE
+- Prévalence mondiale : 1,28 milliard d'adultes (2021, OMS)
+- Première cause de mortalité évitable dans le monde
+- Facteurs de risque : âge, obésité, consommation excessive de sel, alcool, 
+  sédentarité, stress, antécédents familiaux
+
+4. PHYSIOPATHOLOGIE
+HTA essentielle (95% des cas) : multifactorielle
+- Augmentation du débit cardiaque
+- Augmentation des résistances vasculaires périphériques
+- Dysfonction endothéliale
+- Activation du système rénine-angiotensine-aldostérone (SRAA)
+- Hyperactivité du système nerveux sympathique
+
+HTA secondaire (5% des cas) :
+- Causes rénales : sténose artère rénale, glomérulonéphrite
+- Causes endocriniennes : phéochromocytome, syndrome de Cushing, hyperaldostéronisme
+- Causes médicamenteuses : AINS, corticoïdes, contraceptifs oraux
+
+5. COMPLICATIONS
+Atteinte des organes cibles :
+- Cœur : hypertrophie ventriculaire gauche, insuffisance cardiaque, coronaropathie
+- Cerveau : AVC ischémique ou hémorragique, démence vasculaire
+- Rein : néphro-angiosclérose, insuffisance rénale chronique
+- Œil : rétinopathie hypertensive
+- Vaisseaux : athérosclérose accélérée, anévrisme aortique
+
+6. TRAITEMENT
+Objectif : PAS < 140 et PAD < 90 mmHg (< 130/80 si diabète ou insuffisance rénale)
+
+Mesures non pharmacologiques :
+- Réduction du sel (< 6 g/jour)
+- Alimentation DASH (fruits, légumes, produits laitiers allégés)
+- Activité physique régulière (30 min/jour, 5 jours/semaine)
+- Réduction du poids si surpoids/obésité
+- Limitation de l'alcool
+- Arrêt du tabac
+
+Classes médicamenteuses :
+- IEC (Inhibiteurs de l'Enzyme de Conversion) : ramipril, énalapril, périndopril
+  - Indication : diabète, néphropathie, insuffisance cardiaque
+  - Effets secondaires : toux sèche, hyperkaliémie, angiœdème
+  
+- ARA II (Antagonistes des Récepteurs de l'Angiotensine II) : losartan, valsartan, irbésartan
+  - Indication : alternative aux IEC si intolérance (toux)
+  
+- Inhibiteurs calciques : amlodipine, nifédipine, diltiazem
+  - Indication : sujet âgé, HTA systolique isolée
+  - Effets secondaires : œdèmes des membres inférieurs
+  
+- Diurétiques thiazidiques : hydrochlorothiazide, indapamide
+  - Indication : première intention, sujet âgé
+  - Effets secondaires : hypokaliémie, hyperuricémie
+  
+- Bêta-bloquants : bisoprolol, nébivolol, aténolol
+  - Indication : coronaropathie, tachycardie, insuffisance cardiaque
+
+7. SUIVI
+- Contrôle tensionnel mensuel initialement, puis tous les 3-6 mois
+- Automesure tensionnelle recommandée
+- Bilan biologique annuel : créatinine, kaliémie, glycémie, lipides
+- ECG annuel
+- Évaluation du risque cardiovasculaire global
+
+Source : European Society of Cardiology (ESC), Organisation Mondiale de la Santé (OMS),
+Haute Autorité de Santé (HAS) — Recommandations 2024

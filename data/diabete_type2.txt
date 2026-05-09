@@ -1,0 +1,65 @@
+DIABÈTE DE TYPE 2 — Guide Clinique Résumé
+
+1. DÉFINITION
+Le diabète de type 2 (DT2) est une maladie métabolique chronique caractérisée par une hyperglycémie 
+résultant d'une résistance à l'insuline et/ou d'un déficit relatif de sécrétion d'insuline.
+Il représente environ 90% des cas de diabète dans le monde.
+
+2. ÉPIDÉMIOLOGIE
+- Prévalence mondiale : environ 537 millions d'adultes (2021, FID)
+- Facteurs de risque majeurs : obésité, sédentarité, alimentation déséquilibrée, 
+  antécédents familiaux, âge > 45 ans
+- En forte augmentation dans les pays en développement
+
+3. PHYSIOPATHOLOGIE
+Le DT2 résulte de deux mécanismes principaux :
+- Insulinorésistance : diminution de la sensibilité des cellules à l'insuline
+- Dysfonction des cellules bêta pancréatiques : sécrétion insuffisante d'insuline
+L'hyperglycémie chronique entraîne une glucotoxicité et une lipotoxicité qui aggravent 
+progressivement ces deux mécanismes (cercle vicieux).
+
+4. DIAGNOSTIC
+Critères diagnostiques (OMS/ADA) :
+- Glycémie à jeun ≥ 1,26 g/L (7,0 mmol/L) à deux reprises
+- Glycémie ≥ 2,0 g/L (11,1 mmol/L) 2h après HGPO 75g
+- HbA1c ≥ 6,5%
+- Glycémie aléatoire ≥ 2,0 g/L avec symptômes classiques
+
+5. COMPLICATIONS
+Complications microvasculaires :
+- Rétinopathie diabétique : première cause de cécité chez l'adulte
+- Néphropathie diabétique : première cause d'insuffisance rénale terminale
+- Neuropathie diabétique : polyneuropathie sensitive distale, neuropathie autonome
+
+Complications macrovasculaires :
+- Infarctus du myocarde (risque x2-4)
+- Accident vasculaire cérébral (risque x2)
+- Artériopathie oblitérante des membres inférieurs
+
+6. TRAITEMENT
+Objectif glycémique : HbA1c < 7% (personnalisé selon le patient)
+
+Première intention :
+- Mesures hygiéno-diététiques (alimentation, activité physique)
+- Metformine (biguanide) : traitement de première ligne
+  - Posologie : 500 mg à 2000 mg/jour
+  - Contre-indications : insuffisance rénale sévère (DFG < 30 mL/min)
+  - Effets secondaires : troubles digestifs
+
+En cas d'échec de la monothérapie :
+- Sulfamides hypoglycémiants (gliclazide, glimépiride)
+- Inhibiteurs DPP-4 (sitagliptine, vildagliptine)
+- Agonistes GLP-1 (liraglutide, sémaglutide)
+- Inhibiteurs SGLT2 (dapagliflozine, empagliflozine)
+- Insulinothérapie en dernier recours
+
+7. SUIVI
+- HbA1c tous les 3 mois
+- Bilan rénal annuel (créatinine, microalbuminurie)
+- Fond d'œil annuel
+- Examen des pieds à chaque consultation
+- Bilan lipidique annuel
+- ECG annuel
+
+Source : Organisation Mondiale de la Santé (OMS), American Diabetes Association (ADA), 
+Haute Autorité de Santé (HAS) — Guides de pratique clinique 2024

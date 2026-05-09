@@ -1,0 +1,73 @@
+ANTIBIOTIQUES — Guide de Prescription Résumé
+
+1. PRINCIPES GÉNÉRAUX
+Les antibiotiques sont des substances capables de tuer (bactéricides) ou d'inhiber la croissance 
+(bactériostatiques) des bactéries. Leur utilisation rationnelle est essentielle pour lutter contre 
+l'antibiorésistance, une menace majeure pour la santé publique mondiale.
+
+2. CLASSIFICATION DES ANTIBIOTIQUES
+
+2.1 Bêta-lactamines
+Le groupe le plus utilisé d'antibiotiques.
+
+Pénicillines :
+- Amoxicilline : spectre large, infections ORL, pulmonaires, urinaires
+  Posologie adulte : 1-3 g/jour en 2-3 prises
+  Effets secondaires : réactions allergiques, diarrhées
+  
+- Amoxicilline + Acide clavulanique (Augmentin) : 
+  spectre élargi aux bactéries productrices de bêta-lactamases
+  Posologie : 1-3 g/jour d'amoxicilline
+
+Céphalosporines :
+- 1ère génération : céfazoline (prophylaxie chirurgicale)
+- 2ème génération : céfuroxime (infections ORL, pulmonaires)
+- 3ème génération : ceftriaxone (méningites, pneumonies sévères)
+  Posologie : 1-2 g/jour IV ou IM
+  
+Carbapénèmes : imipénème, méropénème
+  Réservés aux infections sévères à bactéries multirésistantes
+
+2.2 Macrolides
+- Azithromycine : 500 mg J1, puis 250 mg J2-J5
+- Clarithromycine : 500 mg x2/jour pendant 7 jours
+- Indications : pneumonies atypiques, infections ORL, IST
+- Effets secondaires : troubles digestifs, allongement du QT
+
+2.3 Fluoroquinolones
+- Ciprofloxacine : infections urinaires, digestives
+- Lévofloxacine : pneumonies, infections urinaires compliquées
+- ATTENTION : Risque de tendinopathie, rupture tendineuse, neuropathie
+  Restriction de prescription depuis 2019 (ANSM)
+
+2.4 Aminosides
+- Gentamicine, Amikacine
+- Usage hospitalier, voie injectable
+- Surveillance : dosages sanguins (néphrotoxicité, ototoxicité)
+
+2.5 Glycopeptides
+- Vancomycine : infections à SARM (Staphylocoque Résistant à la Méticilline)
+- Voie IV, surveillance des taux sanguins
+
+3. ANTIBIORÉSISTANCE
+Problème majeur de santé publique :
+- SARM (Staphylococcus aureus résistant à la méticilline)
+- BLSE (Bêta-Lactamases à Spectre Étendu) — E. coli, Klebsiella
+- ERV (Entérocoques résistants à la vancomycine)
+- BHRe (Bactéries Hautement Résistantes émergentes)
+
+Mesures de prévention :
+- Ne pas prescrire d'antibiotiques pour les infections virales
+- Respecter la durée et la posologie prescrites
+- Utiliser des antibiotiques à spectre étroit quand possible
+- Documenter bactériologiquement avant de traiter si possible
+
+4. RÈGLES DE PRESCRIPTION
+- Antibiogramme quand possible (traitement documenté)
+- Durée minimale efficace
+- Réévaluation à 48-72h
+- Désescalade thérapeutique dès que possible
+- Pas d'antibiotiques dans les infections virales (rhume, grippe, bronchite aiguë)
+
+Source : ANSM, SPILF (Société de Pathologie Infectieuse de Langue Française),
+OMS — Guide de bon usage des antibiotiques 2024
