@@ -202,6 +202,39 @@
     50% { transform: scale(1.05); }
 }
 
+/* --- Source Badges --- */
+.source-badge {
+    display: inline-block;
+    padding: 0.25rem 0.75rem;
+    border-radius: 20px;
+    font-size: 0.78rem;
+    font-weight: 600;
+    margin-bottom: 0.5rem;
+}
+
+.doc-badge {
+    background: rgba(16, 185, 129, 0.15);
+    border: 1px solid rgba(16, 185, 129, 0.4);
+    color: #10b981;
+}
+
+.web-badge {
+    background: rgba(245, 158, 11, 0.15);
+    border: 1px solid rgba(245, 158, 11, 0.4);
+    color: #f59e0b;
+}
+
+/* --- New Pipeline Steps --- */
+.step-new {
+    border-color: var(--accent-purple) !important;
+    background: rgba(139, 92, 246, 0.1) !important;
+}
+
+.step-new:hover {
+    border-color: var(--accent-purple) !important;
+    box-shadow: 0 0 15px rgba(139, 92, 246, 0.2) !important;
+}
+
 /* --- Scrollbar --- */
 ::-webkit-scrollbar {
     width: 6px;

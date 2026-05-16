@@ -1,16 +1,19 @@
 # Python
 __pycache__/
-*.py[cod]
-*.egg-info/
-venv/
+*.pyc
 .venv/
+venv/
 
-# Env
+# Environnement
 .env
+
+# ChromaDB (base vectorielle locale)
+chroma_db/
 
 # IDE
 .vscode/
 .idea/
 
-# FAISS index (regenerated)
-faiss_index/
+# Fichiers utilitaires
+generate_guide_pdf.py
+guide_suivi_medassist.pdf

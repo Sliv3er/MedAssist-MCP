@@ -1,5 +1,5 @@
 # MedAssist — Dépendances
-# Basé sur le TP2 : RAG avec LangChain, FAISS et Groq
+# RAG avancé : ChromaDB, Reranking, Agent, Mémoire
 
 langchain
 langchain-core
@@ -7,8 +7,10 @@ langchain-community
 langchain-text-splitters
 langchain-huggingface
 langchain-groq
-faiss-cpu
+langchain-chroma
+chromadb
 sentence-transformers
 pypdf
 python-dotenv
 streamlit
+duckduckgo-search

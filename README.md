@@ -1,23 +1,37 @@
 # 🏥 MedAssist
 
-Assistant médical intelligent basé sur le RAG (Retrieval-Augmented Generation).
+Assistant médical intelligent basé sur le RAG avancé (Retrieval-Augmented Generation).
 
-Ce projet utilise **LangChain**, **FAISS** et **Groq** pour interroger des documents médicaux en langage naturel.
-
-## Pipeline RAG
+## Pipeline RAG v2
 
 ```
-Documents (PDF/TXT) → Chunking → Embeddings → FAISS → Retrieval → Groq LLM → Réponse
+Documents (PDF/TXT) → Chunking → Embeddings → ChromaDB → Reranking → Agent → Réponse
+                                                                        ↓
+                                                              🌐 Recherche Web (fallback)
+                                                                        ↓
+                                                              Enrichissement ChromaDB
 ```
+
+## Fonctionnalités
+
+| Fonctionnalité | Description |
+|---------------|-------------|
+| **ChromaDB** | Base vectorielle persistante (données sauvegardées entre sessions) |
+| **Reranking** | Cross-Encoder pour réordonner les résultats (meilleure pertinence) |
+| **Mémoire** | L'assistant se souvient des échanges précédents |
+| **Agent Web** | Si l'info n'est pas dans les documents, recherche automatique sur le web |
+| **Enrichissement** | Les résultats web sont ajoutés à ChromaDB pour les prochaines questions |
 
 ## Technologies
 
 | Outil | Rôle |
 |-------|------|
-| LangChain | Orchestration du pipeline |
-| FAISS | Base vectorielle (recherche sémantique) |
+| LangChain | Orchestration du pipeline RAG |
+| ChromaDB | Base vectorielle persistante |
 | HuggingFace Embeddings | Transformation texte → vecteurs |
+| Cross-Encoder | Reranking des résultats |
 | Groq (Llama 3.3 70B) | Génération de réponses |
+| DuckDuckGo | Recherche web (fallback agent) |
 | Streamlit | Interface web |
 
 ## Installation
@@ -37,32 +51,25 @@ copy .env.example .env
 
 ## Utilisation
 
+### Interface web (Streamlit)
+```bash
+python -m streamlit run app.py
+```
+
 ### Mode console
 ```bash
 python rag_medical.py
 ```
 
-### Interface web (Streamlit)
-```bash
-streamlit run app.py
-```
-
-## Documents médicaux
-
-Le dossier `data/` contient les documents à interroger :
-- `diabete_type2.txt` — Guide clinique sur le diabète de type 2
-- `hypertension_arterielle.txt` — Guide sur l'hypertension artérielle
-- `antibiotiques_guide.txt` — Guide de prescription des antibiotiques
-
-Vous pouvez ajouter vos propres fichiers PDF ou TXT dans ce dossier.
-
 ## Structure du projet
 
 ```
 MedAssist/
-├── data/                  # Documents médicaux
+├── data/                  # Documents médicaux (PDF/TXT)
+├── chroma_db/             # Base ChromaDB persistante (auto-générée)
 ├── .streamlit/            # Configuration Streamlit
-├── rag_medical.py         # Pipeline RAG (script principal)
+├── rag_medical.py         # Pipeline RAG (ChromaDB + Reranking)
+├── agent.py               # Agent web search + enrichissement
 ├── app.py                 # Interface Streamlit
 ├── style.css              # Thème visuel
 ├── requirements.txt       # Dépendances Python
@@ -75,6 +82,8 @@ MedAssist/
 |-----------|--------|-------------|
 | CHUNK_SIZE | 800 | Taille des morceaux de texte |
 | CHUNK_OVERLAP | 150 | Chevauchement entre chunks |
-| TOP_K | 3 | Nombre de chunks récupérés |
-| Modèle embeddings | all-MiniLM-L6-v2 | Modèle de vectorisation |
-| Modèle LLM | llama-3.3-70b-versatile | Modèle de génération |
+| TOP_K_RETRIEVAL | 10 | Chunks récupérés avant reranking |
+| TOP_K_FINAL | 3 | Chunks gardés après reranking |
+| Embeddings | all-MiniLM-L6-v2 | Modèle de vectorisation |
+| Reranker | ms-marco-MiniLM-L-6-v2 | Cross-Encoder pour le reranking |
+| LLM | llama-3.3-70b-versatile | Modèle de génération |

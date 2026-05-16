@@ -1,8 +1,7 @@
 """
-MedAssist — Interface Streamlit
-================================
-Interface web pour interroger les documents médicaux.
-Utilise le pipeline RAG de rag_medical.py.
+MedAssist — Interface Streamlit v2
+====================================
+Interface web avec mémoire de conversation, reranking et agent web.
 """
 
 import streamlit as st
@@ -14,12 +13,16 @@ from rag_medical import (
     load_documents,
     split_documents,
     create_vectorstore,
+    create_retriever,
     build_prompt,
-    answer_question,
+    format_history,
+    get_embeddings,
     DATA_DIR,
+    CHROMA_DIR,
     GROQ_MODEL,
-    TOP_K,
+    TOP_K_FINAL,
 )
+from agent import agent_answer
 from langchain_groq import ChatGroq
 
 # --- Configuration de la page ---
@@ -47,24 +50,38 @@ def init_rag():
             st.error("⚠️ Clé GROQ_API_KEY manquante. Créez un fichier `.env`.")
             st.stop()
 
-        with st.spinner("Chargement des documents médicaux..."):
-            documents = load_documents(DATA_DIR)
-            chunks = split_documents(documents)
-            vectorstore = create_vectorstore(chunks)
+        with st.spinner("Initialisation du pipeline RAG..."):
+            embeddings = get_embeddings()
 
-            st.session_state.retriever = vectorstore.as_retriever(
-                search_kwargs={"k": TOP_K}
-            )
+            # Vérifier si ChromaDB existe déjà
+            if CHROMA_DIR.exists() and any(CHROMA_DIR.iterdir()):
+                vectorstore = create_vectorstore(embeddings=embeddings)
+                # Compter les documents dans la collection
+                collection = vectorstore._collection
+                num_chunks = collection.count()
+            else:
+                documents = load_documents(DATA_DIR)
+                chunks = split_documents(documents)
+                vectorstore = create_vectorstore(
+                    chunks=chunks, embeddings=embeddings
+                )
+                num_chunks = len(chunks)
+
+            retriever = create_retriever(vectorstore)
+
+            st.session_state.vectorstore = vectorstore
+            st.session_state.retriever = retriever
             st.session_state.llm = ChatGroq(
                 model=GROQ_MODEL,
                 temperature=0,
                 api_key=groq_api_key,
             )
             st.session_state.prompt = build_prompt()
-            st.session_state.num_chunks = len(chunks)
+            st.session_state.num_chunks = num_chunks
             st.session_state.num_docs = len(
-                set(d.metadata.get("source", "") for d in documents)
+                list(DATA_DIR.glob("*.pdf")) + list(DATA_DIR.glob("*.txt"))
             )
+            st.session_state.web_enrichments = 0
             st.session_state.rag_ready = True
 
     if "messages" not in st.session_state:
@@ -79,7 +96,7 @@ def render_sidebar():
             <div class="sidebar-header">
                 <div class="logo-icon">🏥</div>
                 <h2>MedAssist</h2>
-                <p class="subtitle">Assistant Médical RAG</p>
+                <p class="subtitle">Assistant Médical RAG v2</p>
             </div>
             """,
             unsafe_allow_html=True,
@@ -96,6 +113,12 @@ def render_sidebar():
             with col2:
                 st.metric("Chunks", st.session_state.num_chunks)
 
+            if st.session_state.web_enrichments > 0:
+                st.metric(
+                    "🌐 Enrichissements web",
+                    st.session_state.web_enrichments,
+                )
+
         st.markdown("---")
 
         # Liste des documents
@@ -109,8 +132,8 @@ def render_sidebar():
 
         st.markdown("---")
 
-        # Pipeline RAG info
-        st.markdown("### ⚙️ Pipeline RAG")
+        # Pipeline RAG v2
+        st.markdown("### ⚙️ Pipeline RAG v2")
         st.markdown(
             """
             <div class="pipeline-info">
@@ -120,9 +143,13 @@ def render_sidebar():
                 <div class="pipeline-arrow">↓</div>
                 <div class="pipeline-step">🧮 Embeddings</div>
                 <div class="pipeline-arrow">↓</div>
-                <div class="pipeline-step">🔍 FAISS Retrieval</div>
+                <div class="pipeline-step step-new">🗄️ ChromaDB</div>
                 <div class="pipeline-arrow">↓</div>
-                <div class="pipeline-step">🤖 Groq LLM</div>
+                <div class="pipeline-step step-new">🔀 Reranking</div>
+                <div class="pipeline-arrow">↓</div>
+                <div class="pipeline-step step-new">🤖 Agent</div>
+                <div class="pipeline-arrow">↓</div>
+                <div class="pipeline-step">📚 Docs / 🌐 Web</div>
             </div>
             """,
             unsafe_allow_html=True,
@@ -133,13 +160,21 @@ def render_sidebar():
             """
             <div class="tech-stack">
                 <span class="tech-badge">LangChain</span>
-                <span class="tech-badge">FAISS</span>
+                <span class="tech-badge">ChromaDB</span>
                 <span class="tech-badge">Groq</span>
-                <span class="tech-badge">Llama 3.3</span>
+                <span class="tech-badge">Reranking</span>
+                <span class="tech-badge">Agent</span>
             </div>
             """,
             unsafe_allow_html=True,
         )
+
+        st.markdown("---")
+
+        # Bouton reset conversation
+        if st.button("🗑️ Effacer la conversation", use_container_width=True):
+            st.session_state.messages = []
+            st.rerun()
 
 
 def render_chat():
@@ -149,7 +184,7 @@ def render_chat():
         """
         <div class="main-header">
             <h1>🏥 MedAssist</h1>
-            <p>Posez vos questions sur les documents médicaux</p>
+            <p>Assistant médical intelligent avec recherche documentaire et web</p>
         </div>
         """,
         unsafe_allow_html=True,
@@ -157,17 +192,38 @@ def render_chat():
 
     # Affichage de l'historique
     for msg in st.session_state.messages:
-        with st.chat_message(msg["role"], avatar="🧑‍⚕️" if msg["role"] == "user" else "🤖"):
+        avatar = "🧑‍⚕️" if msg["role"] == "user" else "🤖"
+        with st.chat_message(msg["role"], avatar=avatar):
+            # Badge source
+            if msg["role"] == "assistant" and "source_type" in msg:
+                if msg["source_type"] == "web":
+                    st.markdown(
+                        '<span class="source-badge web-badge">🌐 Recherche Web</span>',
+                        unsafe_allow_html=True,
+                    )
+                else:
+                    st.markdown(
+                        '<span class="source-badge doc-badge">📚 Documents</span>',
+                        unsafe_allow_html=True,
+                    )
+
             st.markdown(msg["content"])
 
             # Afficher les sources si présentes
             if msg["role"] == "assistant" and "sources" in msg:
-                with st.expander("📚 Chunks récupérés", expanded=False):
+                label = "🌐 Sources web" if msg.get("source_type") == "web" else "📚 Chunks récupérés"
+                with st.expander(label, expanded=False):
                     for i, src in enumerate(msg["sources"], 1):
                         st.markdown(
                             f"**{i}. {src['source']}** (page {src['page']})"
                         )
                         st.markdown(f"> {src['preview']}")
+
+            # Notification enrichissement
+            if msg["role"] == "assistant" and msg.get("web_added", 0) > 0:
+                st.success(
+                    f"✅ {msg['web_added']} chunk(s) ajouté(s) à ChromaDB depuis le web"
+                )
 
     # Input utilisateur
     if question := st.chat_input("Posez votre question médicale..."):
@@ -176,21 +232,38 @@ def render_chat():
         with st.chat_message("user", avatar="🧑‍⚕️"):
             st.markdown(question)
 
-        # Générer la réponse
+        # Générer la réponse via l'agent
         with st.chat_message("assistant", avatar="🤖"):
-            with st.spinner("Recherche dans les documents..."):
-                answer, docs = answer_question(
-                    question,
-                    st.session_state.retriever,
-                    st.session_state.llm,
-                    st.session_state.prompt,
+            with st.spinner("🔍 Recherche et analyse..."):
+                history = format_history(st.session_state.messages)
+
+                answer, docs, source_type, web_added = agent_answer(
+                    question=question,
+                    retriever=st.session_state.retriever,
+                    llm=st.session_state.llm,
+                    prompt=st.session_state.prompt,
+                    vectorstore=st.session_state.vectorstore,
+                    history=history,
+                )
+
+            # Badge source
+            if source_type == "web":
+                st.markdown(
+                    '<span class="source-badge web-badge">🌐 Recherche Web</span>',
+                    unsafe_allow_html=True,
+                )
+            else:
+                st.markdown(
+                    '<span class="source-badge doc-badge">📚 Documents</span>',
+                    unsafe_allow_html=True,
                 )
 
             st.markdown(answer)
 
             # Sources
             sources = []
-            with st.expander("📚 Chunks récupérés", expanded=False):
+            label = "🌐 Sources web" if source_type == "web" else "📚 Chunks récupérés"
+            with st.expander(label, expanded=False):
                 for i, doc in enumerate(docs, 1):
                     source = doc.metadata.get("source", "?")
                     page = doc.metadata.get("page", "?")
@@ -205,10 +278,22 @@ def render_chat():
                         {"source": source, "page": page, "preview": preview}
                     )
 
+            # Notification enrichissement
+            if web_added > 0:
+                st.success(
+                    f"✅ {web_added} chunk(s) ajouté(s) à ChromaDB depuis le web"
+                )
+                st.session_state.web_enrichments += web_added
+                st.session_state.num_chunks += web_added
+
         # Sauvegarder la réponse
-        st.session_state.messages.append(
-            {"role": "assistant", "content": answer, "sources": sources}
-        )
+        st.session_state.messages.append({
+            "role": "assistant",
+            "content": answer,
+            "sources": sources,
+            "source_type": source_type,
+            "web_added": web_added,
+        })
 
 
 def main():
