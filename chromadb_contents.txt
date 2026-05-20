@@ -1,0 +1,295 @@
+=== ChromaDB MedAssist — 19 chunks total ===
+
+--- antibiotiques_guide.txt (5 chunks) ---
+
+[Chunk 1]
+ANTIBIOTIQUES — Guide de Prescription Résumé
+
+1. PRINCIPES GÉNÉRAUX
+Les antibiotiques sont des substances capables de tuer (bactéricides) ou d'inhiber la croissance 
+(bactériostatiques) des bactéries. Leur utilisation rationnelle est essentielle pour lutter contre 
+l'antibiorésistance, une menace majeure pour la santé publique mondiale.
+
+2. CLASSIFICATION DES ANTIBIOTIQUES
+
+2.1 Bêta-lactamines
+Le groupe le plus utilisé d'antibiotiques.
+
+Pénicillines :
+- Amoxicilline : spectre large, infections ORL, pulmonaires, urinaires
+  Posologie adulte : 1-3 g/jour en 2-3 prises
+  Effets secondaires : réactions allergiques, diarrhées
+  
+- Amoxicilline + Acide clavulanique (Augmentin) : 
+  spectre élargi aux bactéries productrices de bêta-lactamases
+  Posologie : 1-3 g/jour d'amoxicilline
+
+[Chunk 2]
+Céphalosporines :
+- 1ère génération : céfazoline (prophylaxie chirurgicale)
+- 2ème génération : céfuroxime (infections ORL, pulmonaires)
+- 3ème génération : ceftriaxone (méningites, pneumonies sévères)
+  Posologie : 1-2 g/jour IV ou IM
+  
+Carbapénèmes : imipénème, méropénème
+  Réservés aux infections sévères à bactéries multirésistantes
+
+2.2 Macrolides
+- Azithromycine : 500 mg J1, puis 250 mg J2-J5
+- Clarithromycine : 500 mg x2/jour pendant 7 jours
+- Indications : pneumonies atypiques, infections ORL, IST
+- Effets secondaires : troubles digestifs, allongement du QT
+
+[Chunk 3]
+2.3 Fluoroquinolones
+- Ciprofloxacine : infections urinaires, digestives
+- Lévofloxacine : pneumonies, infections urinaires compliquées
+- ATTENTION : Risque de tendinopathie, rupture tendineuse, neuropathie
+  Restriction de prescription depuis 2019 (ANSM)
+
+2.4 Aminosides
+- Gentamicine, Amikacine
+- Usage hospitalier, voie injectable
+- Surveillance : dosages sanguins (néphrotoxicité, ototoxicité)
+
+2.5 Glycopeptides
+- Vancomycine : infections à SARM (Staphylocoque Résistant à la Méticilline)
+- Voie IV, surveillance des taux sanguins
+
+[Chunk 4]
+2.5 Glycopeptides
+- Vancomycine : infections à SARM (Staphylocoque Résistant à la Méticilline)
+- Voie IV, surveillance des taux sanguins
+
+3. ANTIBIORÉSISTANCE
+Problème majeur de santé publique :
+- SARM (Staphylococcus aureus résistant à la méticilline)
+- BLSE (Bêta-Lactamases à Spectre Étendu) — E. coli, Klebsiella
+- ERV (Entérocoques résistants à la vancomycine)
+- BHRe (Bactéries Hautement Résistantes émergentes)
+
+Mesures de prévention :
+- Ne pas prescrire d'antibiotiques pour les infections virales
+- Respecter la durée et la posologie prescrites
+- Utiliser des antibiotiques à spectre étroit quand possible
+- Documenter bactériologiquement avant de traiter si possible
+
+[Chunk 5]
+4. RÈGLES DE PRESCRIPTION
+- Antibiogramme quand possible (traitement documenté)
+- Durée minimale efficace
+- Réévaluation à 48-72h
+- Désescalade thérapeutique dès que possible
+- Pas d'antibiotiques dans les infections virales (rhume, grippe, bronchite aiguë)
+
+Source : ANSM, SPILF (Société de Pathologie Infectieuse de Langue Française),
+OMS — Guide de bon usage des antibiotiques 2024
+
+============================================================
+
+--- diabete_type2.txt (5 chunks) ---
+
+[Chunk 1]
+DIABÈTE DE TYPE 2 — Guide Clinique Résumé
+
+1. DÉFINITION
+Le diabète de type 2 (DT2) est une maladie métabolique chronique caractérisée par une hyperglycémie 
+résultant d'une résistance à l'insuline et/ou d'un déficit relatif de sécrétion d'insuline.
+Il représente environ 90% des cas de diabète dans le monde.
+
+2. ÉPIDÉMIOLOGIE
+- Prévalence mondiale : environ 537 millions d'adultes (2021, FID)
+- Facteurs de risque majeurs : obésité, sédentarité, alimentation déséquilibrée, 
+  antécédents familiaux, âge > 45 ans
+- En forte augmentation dans les pays en développement
+
+[Chunk 2]
+3. PHYSIOPATHOLOGIE
+Le DT2 résulte de deux mécanismes principaux :
+- Insulinorésistance : diminution de la sensibilité des cellules à l'insuline
+- Dysfonction des cellules bêta pancréatiques : sécrétion insuffisante d'insuline
+L'hyperglycémie chronique entraîne une glucotoxicité et une lipotoxicité qui aggravent 
+progressivement ces deux mécanismes (cercle vicieux).
+
+4. DIAGNOSTIC
+Critères diagnostiques (OMS/ADA) :
+- Glycémie à jeun ≥ 1,26 g/L (7,0 mmol/L) à deux reprises
+- Glycémie ≥ 2,0 g/L (11,1 mmol/L) 2h après HGPO 75g
+- HbA1c ≥ 6,5%
+- Glycémie aléatoire ≥ 2,0 g/L avec symptômes classiques
+
+[Chunk 3]
+5. COMPLICATIONS
+Complications microvasculaires :
+- Rétinopathie diabétique : première cause de cécité chez l'adulte
+- Néphropathie diabétique : première cause d'insuffisance rénale terminale
+- Neuropathie diabétique : polyneuropathie sensitive distale, neuropathie autonome
+
+Complications macrovasculaires :
+- Infarctus du myocarde (risque x2-4)
+- Accident vasculaire cérébral (risque x2)
+- Artériopathie oblitérante des membres inférieurs
+
+6. TRAITEMENT
+Objectif glycémique : HbA1c < 7% (personnalisé selon le patient)
+
+[Chunk 4]
+6. TRAITEMENT
+Objectif glycémique : HbA1c < 7% (personnalisé selon le patient)
+
+Première intention :
+- Mesures hygiéno-diététiques (alimentation, activité physique)
+- Metformine (biguanide) : traitement de première ligne
+  - Posologie : 500 mg à 2000 mg/jour
+  - Contre-indications : insuffisance rénale sévère (DFG < 30 mL/min)
+  - Effets secondaires : troubles digestifs
+
+En cas d'échec de la monothérapie :
+- Sulfamides hypoglycémiants (gliclazide, glimépiride)
+- Inhibiteurs DPP-4 (sitagliptine, vildagliptine)
+- Agonistes GLP-1 (liraglutide, sémaglutide)
+- Inhibiteurs SGLT2 (dapagliflozine, empagliflozine)
+- Insulinothérapie en dernier recours
+
+[Chunk 5]
+7. SUIVI
+- HbA1c tous les 3 mois
+- Bilan rénal annuel (créatinine, microalbuminurie)
+- Fond d'œil annuel
+- Examen des pieds à chaque consultation
+- Bilan lipidique annuel
+- ECG annuel
+
+Source : Organisation Mondiale de la Santé (OMS), American Diabetes Association (ADA), 
+Haute Autorité de Santé (HAS) — Guides de pratique clinique 2024
+
+============================================================
+
+--- hypertension_arterielle.txt (6 chunks) ---
+
+[Chunk 1]
+HYPERTENSION ARTÉRIELLE — Guide Clinique Résumé
+
+1. DÉFINITION
+L'hypertension artérielle (HTA) est définie par une pression artérielle systolique (PAS) 
+≥ 140 mmHg et/ou une pression artérielle diastolique (PAD) ≥ 90 mmHg, mesurée au cabinet médical.
+Elle constitue le premier facteur de risque cardiovasculaire modifiable dans le monde.
+
+2. CLASSIFICATION
+- Normale : PAS < 120 et PAD < 80 mmHg
+- Normale haute : PAS 120-139 ou PAD 80-89 mmHg
+- HTA Grade 1 (légère) : PAS 140-159 ou PAD 90-99 mmHg
+- HTA Grade 2 (modérée) : PAS 160-179 ou PAD 100-109 mmHg
+- HTA Grade 3 (sévère) : PAS ≥ 180 ou PAD ≥ 110 mmHg
+
+[Chunk 2]
+3. ÉPIDÉMIOLOGIE
+- Prévalence mondiale : 1,28 milliard d'adultes (2021, OMS)
+- Première cause de mortalité évitable dans le monde
+- Facteurs de risque : âge, obésité, consommation excessive de sel, alcool, 
+  sédentarité, stress, antécédents familiaux
+
+4. PHYSIOPATHOLOGIE
+HTA essentielle (95% des cas) : multifactorielle
+- Augmentation du débit cardiaque
+- Augmentation des résistances vasculaires périphériques
+- Dysfonction endothéliale
+- Activation du système rénine-angiotensine-aldostérone (SRAA)
+- Hyperactivité du système nerveux sympathique
+
+HTA secondaire (5% des cas) :
+- Causes rénales : sténose artère rénale, glomérulonéphrite
+- Causes endocriniennes : phéochromocytome, syndrome de Cushing, hyperaldostéronisme
+- Causes médicamenteuses : AINS, corticoïdes, contraceptifs oraux
+
+[Chunk 3]
+5. COMPLICATIONS
+Atteinte des organes cibles :
+- Cœur : hypertrophie ventriculaire gauche, insuffisance cardiaque, coronaropathie
+- Cerveau : AVC ischémique ou hémorragique, démence vasculaire
+- Rein : néphro-angiosclérose, insuffisance rénale chronique
+- Œil : rétinopathie hypertensive
+- Vaisseaux : athérosclérose accélérée, anévrisme aortique
+
+6. TRAITEMENT
+Objectif : PAS < 140 et PAD < 90 mmHg (< 130/80 si diabète ou insuffisance rénale)
+
+Mesures non pharmacologiques :
+- Réduction du sel (< 6 g/jour)
+- Alimentation DASH (fruits, légumes, produits laitiers allégés)
+- Activité physique régulière (30 min/jour, 5 jours/semaine)
+- Réduction du poids si surpoids/obésité
+- Limitation de l'alcool
+- Arrêt du tabac
+
+[Chunk 4]
+Classes médicamenteuses :
+- IEC (Inhibiteurs de l'Enzyme de Conversion) : ramipril, énalapril, périndopril
+  - Indication : diabète, néphropathie, insuffisance cardiaque
+  - Effets secondaires : toux sèche, hyperkaliémie, angiœdème
+  
+- ARA II (Antagonistes des Récepteurs de l'Angiotensine II) : losartan, valsartan, irbésartan
+  - Indication : alternative aux IEC si intolérance (toux)
+  
+- Inhibiteurs calciques : amlodipine, nifédipine, diltiazem
+  - Indication : sujet âgé, HTA systolique isolée
+  - Effets secondaires : œdèmes des membres inférieurs
+  
+- Diurétiques thiazidiques : hydrochlorothiazide, indapamide
+  - Indication : première intention, sujet âgé
+  - Effets secondaires : hypokaliémie, hyperuricémie
+  
+- Bêta-bloquants : bisoprolol, nébivolol, aténolol
+
+[Chunk 5]
+- Effets secondaires : hypokaliémie, hyperuricémie
+  
+- Bêta-bloquants : bisoprolol, nébivolol, aténolol
+  - Indication : coronaropathie, tachycardie, insuffisance cardiaque
+
+[Chunk 6]
+7. SUIVI
+- Contrôle tensionnel mensuel initialement, puis tous les 3-6 mois
+- Automesure tensionnelle recommandée
+- Bilan biologique annuel : créatinine, kaliémie, glycémie, lipides
+- ECG annuel
+- Évaluation du risque cardiovasculaire global
+
+Source : European Society of Cardiology (ESC), Organisation Mondiale de la Santé (OMS),
+Haute Autorité de Santé (HAS) — Recommandations 2024
+
+============================================================
+
+--- web:https://en.wikipedia.org/wiki/Machine_learning (1 chunks) ---
+
+[Chunk 1]
+Machine learning - Wikipedia
+
+Machine learning (ML) is a field of study in artificial intelligence concerned with the development and study of statistical algorithms that can learn from data
+
+Source: https://en.wikipedia.org/wiki/Machine_learning
+
+============================================================
+
+--- web:https://www.ibm.com/think/topics/machine-learning (1 chunks) ---
+
+[Chunk 1]
+What is Machine Learning? | IBM
+
+Machine learning is the subset of artificial intelligence (AI) focused on algorithms that can “learn” the patterns of training data and, subsequently, ...What is machine learning? · How machine learning works
+
+Source: https://www.ibm.com/think/topics/machine-learning
+
+============================================================
+
+--- web:https://www.geeksforgeeks.org/machine-learning/machine-learn (1 chunks) ---
+
+[Chunk 1]
+Machine Learning Tutorial - GeeksforGeeks
+
+Apr 15, 2026 · Machine learning is a branch of Artificial Intelligence that focuses on developing models and algorithms that let computers learn from data
+
+Source: https://www.geeksforgeeks.org/machine-learning/machine-learning/
+
+============================================================
+
