@@ -50,16 +50,17 @@ def init_rag():
             st.error("⚠️ Clé GROQ_API_KEY manquante. Créez un fichier `.env`.")
             st.stop()
 
-        with st.spinner("Initialisation du pipeline RAG..."):
+        with st.spinner("⏳ Initialisation du pipeline RAG (indexation + reranker)..."):
             embeddings = get_embeddings()
 
             # Vérifier si ChromaDB existe déjà
             if CHROMA_DIR.exists() and any(CHROMA_DIR.iterdir()):
+                st.info("📂 Chargement de la base ChromaDB existante...")
                 vectorstore = create_vectorstore(embeddings=embeddings)
-                # Compter les documents dans la collection
                 collection = vectorstore._collection
                 num_chunks = collection.count()
             else:
+                st.info("📝 Première exécution : indexation des documents dans ChromaDB...")
                 documents = load_documents(DATA_DIR)
                 chunks = split_documents(documents)
                 vectorstore = create_vectorstore(
@@ -67,6 +68,7 @@ def init_rag():
                 )
                 num_chunks = len(chunks)
 
+            st.info("🔀 Chargement du modèle de reranking (Cross-Encoder)...")
             retriever = create_retriever(vectorstore)
 
             st.session_state.vectorstore = vectorstore
@@ -143,17 +145,30 @@ def render_sidebar():
                 <div class="pipeline-arrow">↓</div>
                 <div class="pipeline-step">🧮 Embeddings</div>
                 <div class="pipeline-arrow">↓</div>
-                <div class="pipeline-step step-new">🗄️ ChromaDB</div>
+                <div class="pipeline-step step-new">🗄️ ChromaDB (persistant)</div>
                 <div class="pipeline-arrow">↓</div>
-                <div class="pipeline-step step-new">🔀 Reranking</div>
+                <div class="pipeline-step step-new">🔀 Reranking (Cross-Encoder)</div>
                 <div class="pipeline-arrow">↓</div>
-                <div class="pipeline-step step-new">🤖 Agent</div>
+                <div class="pipeline-step step-new">🧠 Grading (pertinence)</div>
                 <div class="pipeline-arrow">↓</div>
-                <div class="pipeline-step">📚 Docs / 🌐 Web</div>
+                <div class="pipeline-step step-new">🤖 Agent (Docs ou Web)</div>
+                <div class="pipeline-arrow">↓</div>
+                <div class="pipeline-step step-new">💾 Enrichissement ChromaDB</div>
             </div>
             """,
             unsafe_allow_html=True,
         )
+
+        st.markdown("---")
+
+        # Fonctionnalités actives
+        st.markdown("### ✅ Fonctionnalités actives")
+        st.markdown("🗄️ ChromaDB persistant")
+        st.markdown("🔀 Reranking Cross-Encoder")
+        st.markdown("🧠 Agent intelligent")
+        st.markdown("🌐 Recherche web (DuckDuckGo)")
+        st.markdown("💾 Enrichissement automatique")
+        st.markdown("💬 Mémoire de conversation")
 
         st.markdown("---")
         st.markdown(
@@ -171,7 +186,7 @@ def render_sidebar():
 
         st.markdown("---")
 
-        # Bouton reset conversation
+        # Bouton reset
         if st.button("🗑️ Effacer la conversation", use_container_width=True):
             st.session_state.messages = []
             st.rerun()
@@ -209,9 +224,15 @@ def render_chat():
 
             st.markdown(msg["content"])
 
-            # Afficher les sources si présentes
+            # Agent log
+            if msg["role"] == "assistant" and "agent_log" in msg:
+                with st.expander("🤖 Trace de l'agent", expanded=False):
+                    for log_line in msg["agent_log"]:
+                        st.markdown(log_line)
+
+            # Afficher les sources
             if msg["role"] == "assistant" and "sources" in msg:
-                label = "🌐 Sources web" if msg.get("source_type") == "web" else "📚 Chunks récupérés"
+                label = "🌐 Sources web" if msg.get("source_type") == "web" else "📚 Chunks récupérés (après reranking)"
                 with st.expander(label, expanded=False):
                     for i, src in enumerate(msg["sources"], 1):
                         st.markdown(
@@ -234,10 +255,10 @@ def render_chat():
 
         # Générer la réponse via l'agent
         with st.chat_message("assistant", avatar="🤖"):
-            with st.spinner("🔍 Recherche et analyse..."):
+            with st.spinner("🔍 Agent en cours : Retrieval → Reranking → Grading → Décision..."):
                 history = format_history(st.session_state.messages)
 
-                answer, docs, source_type, web_added = agent_answer(
+                answer, docs, source_type, web_added, agent_log = agent_answer(
                     question=question,
                     retriever=st.session_state.retriever,
                     llm=st.session_state.llm,
@@ -260,9 +281,14 @@ def render_chat():
 
             st.markdown(answer)
 
+            # Agent log - VISIBLE
+            with st.expander("🤖 Trace de l'agent", expanded=True):
+                for log_line in agent_log:
+                    st.markdown(log_line)
+
             # Sources
             sources = []
-            label = "🌐 Sources web" if source_type == "web" else "📚 Chunks récupérés"
+            label = "🌐 Sources web" if source_type == "web" else "📚 Chunks récupérés (après reranking)"
             with st.expander(label, expanded=False):
                 for i, doc in enumerate(docs, 1):
                     source = doc.metadata.get("source", "?")
@@ -293,6 +319,7 @@ def render_chat():
             "sources": sources,
             "source_type": source_type,
             "web_added": web_added,
+            "agent_log": agent_log,
         })
 
 

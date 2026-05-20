@@ -2,6 +2,7 @@
 # RAG avancé : ChromaDB, Reranking, Agent, Mémoire
 
 langchain
+langchain-classic
 langchain-core
 langchain-community
 langchain-text-splitters
@@ -13,4 +14,4 @@ sentence-transformers
 pypdf
 python-dotenv
 streamlit
-duckduckgo-search
+ddgs
